@@ -6,6 +6,7 @@ const mensagem = document.querySelector("#mensagem");
 
 const posicaoInicial = ["preta","preta","preta", "","branca","branca","branca"];
 let posicao = structuredClone(posicaoInicial); // Cópia da posição inicial do tabuleiro
+let fimDeJogo = false;
 
 function renderizarTabuleiro() {
     tabuleiro.innerHTML = "";
@@ -19,13 +20,17 @@ function renderizarTabuleiro() {
             peca.className = `peca ${posicao[i] === "preta" ? "preta" : "branca"}`;
             casa.appendChild(peca);
         }
-
-        casa.addEventListener("click", () => moverPeca(i));
+        if(!fimDeJogo) { //Só é possível mexer se o jogo ainda não tiver chegado no fim
+            casa.addEventListener("click", () => moverPeca(i));
+        }
         tabuleiro.appendChild(casa);
     };
 }
 
 function moverPeca(i) {
+    if(fimDeJogo)
+        return;
+
     const vazio = posicao.indexOf("");
     const distancia = Math.abs(vazio - i);
     // Se a casa escolhida possuir uma peça e o movimento obedecer às regras
@@ -43,7 +48,9 @@ function moverPeca(i) {
         if (fimDoJogo()) {
             mensagem.textContent = "Fim de jogo! Todas as peças estão no local correto. Parabéns!"
             mensagem.classList.add("ok");
-            casa.removeEventListener("click", moverPeca);
+            fimDeJogo = true;
+            // Atualiza o tabuleiro para remover listeners
+            renderizarTabuleiro();
         }
     } else {
         mensagem.textContent = "Movimento inválido!";
