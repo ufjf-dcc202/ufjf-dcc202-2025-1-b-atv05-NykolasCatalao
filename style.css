@@ -26,12 +26,12 @@ p > span {
 }
 
 .mensagem {
-    margin-top: 20px;
+    margin: 20px 0px;
     font-weight: bold;
     color: red;
 }
 .mensagem.ok {
-    color: green;
+    color: rgb(2, 255, 2);
 }
 
 .tabuleiro {
@@ -50,12 +50,15 @@ p > span {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.3s;
 }
 
 .peca {
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    transition: transform 0.3s;
+    position: absolute;
 }
 
 .preta {
