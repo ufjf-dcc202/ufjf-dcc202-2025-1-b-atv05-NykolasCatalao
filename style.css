@@ -20,6 +20,18 @@ p > span {
 #botaoResetar {
     background-color: rgb(159, 157, 157);
     border-radius: 10px;
+    font-size: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.mensagem {
+    margin-top: 20px;
+    font-weight: bold;
+    color: red;
+}
+.mensagem.ok {
+    color: green;
 }
 
 .tabuleiro {
@@ -54,3 +66,4 @@ p > span {
     border: 1px solid #bec1c1;
     background-color: white;
 }
+
