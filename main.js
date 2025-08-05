@@ -1,12 +1,23 @@
 // Inicialização das estruturas da página
 const tabuleiro = document.querySelector("#tabuleiro");
 const mensagem = document.querySelector("#mensagem");
+const btnReset = document.querySelector("#botaoResetar")
 
 // Inicialização do tabuleiro 
 
 const posicaoInicial = ["preta","preta","preta", "","branca","branca","branca"];
 let posicao = structuredClone(posicaoInicial); // Cópia da posição inicial do tabuleiro
 let fimDeJogo = false;
+
+btnReset.addEventListener("click", resetarJogo);
+
+function resetarJogo() {
+    posicao = structuredClone(posicaoInicial);
+    fimDeJogo = false;
+    mensagem.textContent = "";
+    mensagem.classList.remove("ok");
+    renderizarTabuleiro();
+}
 
 function renderizarTabuleiro() {
     tabuleiro.innerHTML = "";
