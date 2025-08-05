@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+    background-color: darkgray;
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+p > span {
+    font-weight: bolder;
+}
+
+#instrucao {
+    font-size: 1rem;
+}
+
